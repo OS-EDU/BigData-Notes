@@ -21,3 +21,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+将删除 .idea/jarRepositories.xml
+将删除 .idea/libraries/
+将删除 .idea/modules.xml
+将删除 .idea/vcs.xml
+将删除 pom.xml
+将删除 src/
+将删除 target/
