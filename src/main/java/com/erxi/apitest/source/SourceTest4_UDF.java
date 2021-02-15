@@ -15,7 +15,7 @@ import java.util.Random;
 public class SourceTest4_UDF {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(1);
+//        env.setParallelism(1);
 
         // 从文件读取数据
         DataStream<SensorReading> dataStream = env.addSource(new MySensorSource());
@@ -26,12 +26,15 @@ public class SourceTest4_UDF {
         env.execute();
     }
 
-    // 实现自定义的 SourceFunction
+    // 实现自定义的 SourceFunction，用于随机生成传感器数
     public static class MySensorSource implements SourceFunction<SensorReading> {
         // 定义一个标识位，用来控制数据的产生
         private boolean running = true;
 
-
+        /**
+         * @param ctx 发出元素的上下文以及访问锁的上下文
+         * @throws Exception 处理异常
+         */
         @Override
         public void run(SourceContext<SensorReading> ctx) throws Exception {
             // 定义一个随机数发生器
@@ -55,6 +58,7 @@ public class SourceTest4_UDF {
             }
         }
 
+        // 取消
         @Override
         public void cancel() {
             running = false;
