@@ -32,7 +32,16 @@ public class TransformTest2_RollingAggregation {
         // 直接获取数据元素
         DataStream<Long> dataStream1 = env.fromElements(1L, 34L, 4L, 657L, 23L);
 
+        /*
+         * Long 表示需要获取元素的类型
+         * Integer 表示经过函数转换之后的元素类型
+         */
         KeyedStream<Long, Integer> keyedStream2 = dataStream1.keyBy(new KeySelector<Long, Integer>() {
+            /**
+             * @param value 获取需要处理的元素
+             * @return 经过处理之后的 value
+             * @throws Exception 处理异常
+             */
             @Override
             public Integer getKey(Long value) throws Exception {
                 return value.intValue() % 2;
