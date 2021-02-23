@@ -10,6 +10,10 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
 import org.apache.flink.util.Collector;
 
+/*
+ * 需求：监控温度传感器的温度值，如果温度值在 10 秒钟之内连续上升，则报警。
+ */
+
 /**
  * @author AKA二夕
  * @create 2021-02-23 14:50
