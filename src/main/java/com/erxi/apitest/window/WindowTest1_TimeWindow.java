@@ -97,9 +97,10 @@ public class WindowTest1_TimeWindow {
 
         SingleOutputStreamOperator<SensorReading> sumStream = dataStream.keyBy("id")
                 .timeWindow(Time.seconds(15))
-                .allowedLateness(Time.minutes(1))
-                .sideOutputLateData(outputTag)
-                .sum("temperature");
+                .allowedLateness(Time.minutes(1)) // 允许1分钟内的迟到数据<=比如数据产生时间在窗口范围内，但是要处理的时候已经超过窗口时间了
+                .sideOutputLateData(outputTag) // 侧输出流，迟到超过1分钟的数据，收集于此
+                .sum("temperature"); // 侧输出流 对 温度信息 求和
+        // 之后可以再用别的程序，把侧输出流的信息和前面窗口的信息聚合。（可以把侧输出流理解为用来批处理来补救处理超时数据）
 
         sumStream.getSideOutput(outputTag).print("late");
 
