@@ -92,7 +92,7 @@ public class WindowTest1_TimeWindow {
                 });
 
         // 3、其它可选 API
-        OutputTag<SensorReading> outputTag = new OutputTag<>("late") {
+        OutputTag<SensorReading> outputTag = new OutputTag<SensorReading>("late") {
         };
 
         SingleOutputStreamOperator<SensorReading> sumStream = dataStream.keyBy("id")

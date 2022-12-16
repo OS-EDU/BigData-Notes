@@ -31,7 +31,7 @@ public class ProcessTest3_SideOutputCase {
         });
 
         // 定义一个 OutputTag，用来表示侧输出流低温流
-        OutputTag<SensorReading> lowTempTag = new OutputTag<>("lowTemp") {
+        OutputTag<SensorReading> lowTempTag = new OutputTag<SensorReading>("lowTemp") {
         };
 
 
