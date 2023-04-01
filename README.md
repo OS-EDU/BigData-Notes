@@ -1,2 +1,4 @@
-# FlinkTutorial
-Apache Flink学习笔记
+# BigData—Notes
+
+*这是一个关于大数据学习的个人记录，因情况而更新，如果觉得还不错可以点个 star，觉得可以优化的地方也欢迎 issue 和 pr~~*
+
