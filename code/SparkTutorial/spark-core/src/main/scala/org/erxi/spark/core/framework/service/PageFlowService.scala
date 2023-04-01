@@ -38,7 +38,7 @@ class PageFlowService extends TService {
     ).reduceByKey(_ + _).collect().toMap
 
     // TODO 计算分子
-    val sessionRDD = actionDataRDD.groupBy(_.session_id) // 根据session 进行分组
+    val sessionRDD = actionDataRDD.groupBy(_.session_id) // 根据 session 进行分组
     // 分组后，根据访问时间进行排序（升序）
     val mvRDD = sessionRDD.mapValues(
       iter => {
@@ -63,7 +63,7 @@ class PageFlowService extends TService {
     dataRDD.foreach {
       case ((pageId1, pageId2), sum) => {
         val lon = pageIdToCountMap.getOrElse(pageId1, 0L)
-        println(s"页面${pageId1}跳转到页面${pageId2}单跳转换率为:" + (sum.toDouble / lon))
+        println(s"页面 ${pageId1} 跳转到页面 ${pageId2} 单跳转换率为:" + (sum.toDouble / lon))
       }
     }
   }

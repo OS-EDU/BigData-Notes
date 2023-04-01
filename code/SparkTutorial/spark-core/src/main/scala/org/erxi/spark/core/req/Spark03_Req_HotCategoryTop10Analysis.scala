@@ -11,7 +11,7 @@ object Spark03_Req_HotCategoryTop10Analysis {
 
     /**
      * TODO: 存在大量 shuffle 操作（reduceByKey）
-     * reduceByKey 聚合算子，spark会提供优化，缓存
+     * reduceByKey 聚合算子，spark 会提供优化，缓存
      */
 
     // 1. 读取原始日志数据
@@ -43,8 +43,8 @@ object Spark03_Req_HotCategoryTop10Analysis {
       }
     )
 
-    // 3. 将相同的品类ID的数据进行分组聚合
-    //    ( 品类ID，( 点击数量, 下单数量, 支付数量 ) )
+    // 3. 将相同的品类 ID 的数据进行分组聚合
+    //    ( 品类 ID，( 点击数量, 下单数量, 支付数量 ) )
     val analysisRDD = flatRDD.reduceByKey(
       (t1, t2) => {
         (t1._1 + t2._1, t1._2 + t2._2, t1._3 + t2._3)
