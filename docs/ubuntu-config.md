@@ -44,7 +44,9 @@ export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 ### 2.安装 Rust（请先完成步骤一的环境变量导入并 source rc 文件或重启终端生效）
 
+```zsh
 curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh
+```
 
 ### 3.设置 crates.io 镜像，修改配置 ~/.cargo/config，已支持 git 协议和 sparse 协议，>=1.68 版本建议使用 sparse-index，速度更快。
 
@@ -74,7 +76,7 @@ protoc --version
 ### 2.安装 atuin
 
 ```zsh
-cargo intsall atuin
+cargo install atuin
 ```
 
 ### 3.添加环境变量
@@ -119,7 +121,7 @@ set password=password('新密码');
 # 配置 IP 5.7
 grant all privileges on *.* to root@"%" identified by "密码";
 # 刷新缓存
-flush privileges;
+FLUSH PRIVILEGES;
 ```
 
 开发 IP 访问。
@@ -139,13 +141,13 @@ sudo systemctl restart mysql
 ```zsh
 vim ~/.zshrc
 
-ulimit -n 65535
+ulimit -n 65536
 sysctl -w vm.max_map_count=2000000
 
 source ~/.zshrc
 ```
 
-检测到最大打开文件数小于 65536，建议修改最大打开文件数为 1000000，请打开终端窗口，输入以下命令 (需要重启终端及 Agent 生效)：
+检测到最大打开文件数小于 65536，建议修改最大打开文件数为 1000000，请打开终端窗口，输入以下命令：
 
 ```zsh
 sudo vim /etc/security/limits.conf
